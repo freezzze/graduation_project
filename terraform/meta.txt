@@ -1,0 +1,8 @@
+#cloud-config (в этом проекте не используется)
+users:
+  - name: duser
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+      - your public key
