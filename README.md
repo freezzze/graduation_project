@@ -67,7 +67,10 @@ To start using your cluster, you need to run the following as a regular user:
   mkdir -p $HOME/.kube
   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
   sudo chown $(id -u):$(id -g) $HOME/.kube/config 
-И получившейся config копируем на 'srv' $HOME/.kube/ и затем ставим kubectl, docker-compose и gitlab-runner-->
+И получившейся config копируем на 'srv' $HOME/.kube/ и затем ставим kubectl, docker-compose и gitlab-runner
+И настраиваем запуск docker без sudo:
+sudo usermod -aG docker $USER&&newgrp docker
+-->
 
 4. После развертывания инфраструктуры с помощью Ansible, регистрируем Runner на Gitlab:
 
