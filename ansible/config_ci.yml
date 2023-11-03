@@ -1,0 +1,35 @@
+---
+- name: Разворачивание Gitlab CE
+  hosts: ci
+  become: true
+  tasks:
+    - name: Создание директорий
+      file:
+        path: /opt/gitlab/{{ item }}
+        state: directory
+        mode: 0644
+      loop:
+        - config
+        - logs
+        - data    
+
+    - name: Синхронизация docker-compose.yml с удаленной машиной
+      synchronize:
+        src: inventory/mycluster/docker-compose.yml
+        dest: /opt/gitlab/docker-compose.yml
+
+    - name: Установка Docker, nginx
+      apt:
+        name: '{{ item }}'
+        state: present
+      loop:
+        - docker.io
+        - nginx
+
+    - name: Запустить Docker Compose проект # поправить эту таску
+      community.docker.docker_compose:
+        project_src: /opt/gitlab/docker-compose.yml
+        state: present
+        up: yes
+        build: yes
+        detach: yes
