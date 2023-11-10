@@ -216,8 +216,8 @@ resource "yandex_compute_instance" "ci" {
 
   resources {
     core_fraction = 20
-    cores         = 2
-    memory        = 2
+    cores         = 4
+    memory        = 4
   }
 
   boot_disk {
