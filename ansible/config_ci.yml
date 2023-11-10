@@ -26,6 +26,10 @@
         - docker.io
         - nginx
         - docker-compose
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - software-properties-common
 
     - name: Запустить Docker Compose проект # поправить эту таску
       community.docker.docker_compose:
