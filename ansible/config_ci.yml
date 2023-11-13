@@ -25,11 +25,14 @@
       loop:
         - docker.io
         - nginx
+        - docker-compose
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - software-properties-common
 
     - name: Запустить Docker Compose проект # поправить эту таску
       community.docker.docker_compose:
         project_src: /opt/gitlab/docker-compose.yml
-        state: present
-        up: yes
         build: yes
-        detach: yes
+        state: present
