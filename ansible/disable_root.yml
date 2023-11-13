@@ -1,0 +1,19 @@
+---
+- name: Disable remote root login
+  hosts: kube_control_plane
+  become: true
+  tasks:
+    - name: Отключение доступа по паролю для root через SSH
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^#?PermitRootLogin'
+        line: 'PermitRootLogin prohibit-password'
+        state: present
+      notify:
+        - restart sshd
+
+  handlers:
+    - name: restart sshd
+      service:
+        name: sshd
+        state: restarted
