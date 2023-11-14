@@ -20,6 +20,7 @@
           - docker-compose
         state: present
 
+
     - name: Add Helm apt key
       apt_key:
         url: https://baltocdn.com/helm/signing.asc
