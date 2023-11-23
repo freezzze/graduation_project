@@ -72,15 +72,3 @@ To start using your cluster, you need to run the following as a regular user:
 И настраиваем запуск docker без sudo:
 sudo usermod -aG docker $USER&&newgrp docker
 -->
-
-4. После развертывания инфраструктуры с помощью Ansible, регистрируем Runner на Gitlab:
-
-```sh
-gitlab-runner register
-```
-
-На вопрос "Enter an executor" отвечаем "docker".
-
-5. В настройках CI/CD Gitlab добавляем две переменные - DOCKER_USERNAME и DOCKER_PASSWORD. Соответственно, логин и пароль для прохождения валидации в репозитории Docker Hub.
-
-6. Для корректной работы kubectl на srv берем содержимое файла /etc/kubernetes/admin.conf с мастера kubernetes и копируем его в такой же файл на srv.
