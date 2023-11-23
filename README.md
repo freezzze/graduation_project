@@ -61,6 +61,7 @@ terraform init -backend-config="access_key=$ACCESS_KEY" -backend-config="secret_
 - указываем ставится ли сразу helm 
 - редактируем ansible/ansible.cfg (я указывал путь к inventory и правил privilege_escalation блок)
 
+4. При регистрации gitlab-runner выбираем executor 'docker', образ python:latest. В гитлаб создаём токен с правами registry_read/write. 
 <!--  Написать такой плейбук: для хоста 'srv' ssh-keygen затем забираем полученный .pub на локальную машину и передаём содержимое в authorized_key хоста 'master1'. На хосте 'master1' выполняем: 
 To start using your cluster, you need to run the following as a regular user:
 
